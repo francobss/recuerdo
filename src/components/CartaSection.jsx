@@ -2,7 +2,9 @@ export default function CartaSection({ titulo, subtitulo, parrafos, bloques, cit
   return (
     <article className="animate-fadeIn rounded-3xl border border-blush-200/60 bg-white/70 p-8 shadow-card backdrop-blur-md sm:p-10">
       <h2 className="text-2xl font-semibold text-ink sm:text-3xl">{titulo}</h2>
-      <h3 className="mt-3 text-base font-medium text-blush-400">{subtitulo}</h3>
+      {subtitulo && (
+        <h3 className="mt-3 text-base font-medium text-blush-400">{subtitulo}</h3>
+      )}
 
       <div className="mt-6 space-y-5 text-sm leading-relaxed text-ink/70">
         {parrafos?.map((parrafo, i) => (

@@ -5,8 +5,22 @@ import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
 
 const Recuerdo = lazy(() => import("./pages/Recuerdos"));
+const Tatuaje = lazy(() => import("./pages/Tatuaje"));
+const Dedicatorias = lazy(() => import("./pages/Dedicatorias"));
 
 const SESSION_KEY = "poemav_session";
+
+function RutaProtegida({ autenticado, onLogout, children }) {
+  if (!autenticado) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return (
+    <MainLayout onLogout={onLogout}>
+      <Suspense fallback={null}>{children}</Suspense>
+    </MainLayout>
+  );
+}
 
 export default function App() {
   const [autenticado, setAutenticado] = useState(
@@ -38,27 +52,33 @@ export default function App() {
       <Route
         path="/"
         element={
-          autenticado ? (
-            <MainLayout onLogout={handleLogout}>
-              <Home />
-            </MainLayout>
-          ) : (
-            <Navigate to="/login" replace />
-          )
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <Home />
+          </RutaProtegida>
         }
       />
       <Route
         path="/recuerdo"
         element={
-          autenticado ? (
-            <MainLayout onLogout={handleLogout}>
-              <Suspense fallback={null}>
-                <Recuerdo />
-              </Suspense>
-            </MainLayout>
-          ) : (
-            <Navigate to="/login" replace />
-          )
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <Recuerdo />
+          </RutaProtegida>
+        }
+      />
+      <Route
+        path="/tatuaje"
+        element={
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <Tatuaje />
+          </RutaProtegida>
+        }
+      />
+      <Route
+        path="/dedicatorias"
+        element={
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <Dedicatorias />
+          </RutaProtegida>
         }
       />
       <Route path="*" element={<Navigate to="/" replace />} />

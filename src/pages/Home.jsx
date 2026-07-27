@@ -1,17 +1,37 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, History } from "lucide-react";
+import { ArrowLeft, History, Waves, Quote } from "lucide-react";
 import CategoryCard from "../components/CategoryCard";
 import VideoButton from "../components/VideoButton";
 import { categories } from "../data/categories";
 import { videos } from "../data/videos";
 
-const recuerdoCategoria = {
-  slug: "recuerdo",
-  nombre: "Un recuerdo especial",
-  descripcion: "Antes de esto hice otra web para vos, en 2023. Volvé a leerla.",
-  icono: History,
-};
+const seccionesExtra = [
+  {
+    slug: "recuerdo",
+    nombre: "Un recuerdo especial",
+    descripcion: "Antes de esto hice otra web para vos, en 2023. Volvé a leerla.",
+    icono: History,
+    ruta: "/recuerdo",
+    textoBoton: "Revivir el recuerdo",
+  },
+  {
+    slug: "tatuaje",
+    nombre: "Significado Tatuaje",
+    descripcion: "Los símbolos que elegí llevar conmigo, y lo que representan de vos.",
+    icono: Waves,
+    ruta: "/tatuaje",
+    textoBoton: "Leer el significado",
+  },
+  {
+    slug: "dedicatorias",
+    nombre: "Dedicatorias Tw",
+    descripcion: "Palabras que te escribí y que quise dejar guardadas acá también.",
+    icono: Quote,
+    ruta: "/dedicatorias",
+    textoBoton: "Leer dedicatorias",
+  },
+];
 
 export default function Home() {
   const navigate = useNavigate();
@@ -72,11 +92,14 @@ export default function Home() {
       </div>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <CategoryCard
-          categoria={recuerdoCategoria}
-          onVerVideos={() => navigate("/recuerdo")}
-          textoBoton="Revivir el recuerdo"
-        />
+        {seccionesExtra.map((seccion) => (
+          <CategoryCard
+            key={seccion.slug}
+            categoria={seccion}
+            onVerVideos={() => navigate(seccion.ruta)}
+            textoBoton={seccion.textoBoton}
+          />
+        ))}
       </div>
     </div>
   );
