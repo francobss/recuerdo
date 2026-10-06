@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, History, Waves, Quote } from "lucide-react";
 import CategoryCard from "../components/CategoryCard";
+import RegresoCard from "../components/RegresoCard";
 import VideoButton from "../components/VideoButton";
 import { categories } from "../data/categories";
 import { videos } from "../data/videos";
@@ -82,6 +83,7 @@ export default function Home() {
       </div>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RegresoCard />
         {categories.map((categoria) => (
           <CategoryCard
             key={categoria.slug}

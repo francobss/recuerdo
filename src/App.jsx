@@ -7,6 +7,7 @@ import MainLayout from "./layouts/MainLayout";
 const Recuerdo = lazy(() => import("./pages/Recuerdos"));
 const Tatuaje = lazy(() => import("./pages/Tatuaje"));
 const Dedicatorias = lazy(() => import("./pages/Dedicatorias"));
+const Regreso = lazy(() => import("./pages/Regreso"));
 
 const SESSION_KEY = "poemav_session";
 
@@ -78,6 +79,14 @@ export default function App() {
         element={
           <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
             <Dedicatorias />
+          </RutaProtegida>
+        }
+      />
+      <Route
+        path="/regreso"
+        element={
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <Regreso />
           </RutaProtegida>
         }
       />
