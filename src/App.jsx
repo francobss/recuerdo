@@ -9,6 +9,7 @@ const Tatuaje = lazy(() => import("./pages/Tatuaje"));
 const Dedicatorias = lazy(() => import("./pages/Dedicatorias"));
 const Regreso = lazy(() => import("./pages/Regreso"));
 const Videos = lazy(() => import("./pages/Videos"));
+const Nosotros = lazy(() => import("./pages/Nosotros"));
 
 const SESSION_KEY = "poemav_session";
 
@@ -96,6 +97,14 @@ export default function App() {
         element={
           <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
             <Videos />
+          </RutaProtegida>
+        }
+      />
+      <Route
+        path="/nosotros"
+        element={
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <Nosotros />
           </RutaProtegida>
         }
       />
