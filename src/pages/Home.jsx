@@ -4,7 +4,6 @@ import { ArrowLeft, History, Waves, Quote, Clapperboard } from "lucide-react";
 import CategoryCard from "../components/CategoryCard";
 import RegresoCard from "../components/RegresoCard";
 import VideoButton from "../components/VideoButton";
-import CorazonCard from "../components/CorazonCard";
 import { categories } from "../data/categories";
 import { videos } from "../data/videos";
 
@@ -112,8 +111,6 @@ export default function Home() {
           />
         ))}
       </div>
-
-      <CorazonCard />
     </div>
   );
 }
