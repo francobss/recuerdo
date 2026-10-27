@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, History, Waves, Quote, Clapperboard } from "lucide-react";
+import { ArrowLeft, History, Waves, Quote } from "lucide-react";
 import CategoryCard from "../components/CategoryCard";
 import RegresoCard from "../components/RegresoCard";
 import VideoButton from "../components/VideoButton";
@@ -31,14 +31,6 @@ const seccionesExtra = [
     icono: Quote,
     ruta: "/dedicatorias",
     textoBoton: "Leer dedicatorias",
-  },
-  {
-    slug: "videos",
-    nombre: "Videos para vos",
-    descripcion: "Videos que grabé para contarte cómo me siento y cómo van mis días.",
-    icono: Clapperboard,
-    ruta: "/videos",
-    textoBoton: "Ver los videos",
   },
 ];
 
