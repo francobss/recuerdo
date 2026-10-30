@@ -30,10 +30,17 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        planeFlight: {
+          "0%, 10%": { left: "0%", opacity: "0" },
+          "18%": { opacity: "1" },
+          "82%": { opacity: "1" },
+          "90%, 100%": { left: "calc(100% - 1.5rem)", opacity: "0" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.6s ease-out both",
         floaty: "floaty 6s ease-in-out infinite",
+        planeFlight: "planeFlight 7s ease-in-out infinite",
       },
     },
   },

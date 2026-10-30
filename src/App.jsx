@@ -8,6 +8,8 @@ const Recuerdo = lazy(() => import("./pages/Recuerdos"));
 const Tatuaje = lazy(() => import("./pages/Tatuaje"));
 const Dedicatorias = lazy(() => import("./pages/Dedicatorias"));
 const Regreso = lazy(() => import("./pages/Regreso"));
+const CartaParaVos = lazy(() => import("./pages/CartaParaVos"));
+const Universo = lazy(() => import("./pages/Universo"));
 
 const SESSION_KEY = "poemav_session";
 
@@ -88,6 +90,26 @@ export default function App() {
           <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
             <Regreso />
           </RutaProtegida>
+        }
+      />
+      <Route
+        path="/carta"
+        element={
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <CartaParaVos />
+          </RutaProtegida>
+        }
+      />
+      <Route
+        path="/universo"
+        element={
+          autenticado ? (
+            <Suspense fallback={<div className="fixed inset-0 bg-black" />}>
+              <Universo />
+            </Suspense>
+          ) : (
+            <Navigate to="/login" replace />
+          )
         }
       />
       <Route path="*" element={<Navigate to="/" replace />} />

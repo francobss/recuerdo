@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, History, Waves, Quote } from "lucide-react";
+import { ArrowLeft, History, Waves, Quote, Sparkles } from "lucide-react";
 import CategoryCard from "../components/CategoryCard";
 import RegresoCard from "../components/RegresoCard";
+import CartaCard from "../components/CartaCard";
 import VideoButton from "../components/VideoButton";
 import { categories } from "../data/categories";
 import { videos } from "../data/videos";
@@ -31,6 +32,14 @@ const seccionesExtra = [
     icono: Quote,
     ruta: "/dedicatorias",
     textoBoton: "Leer dedicatorias",
+  },
+  {
+    slug: "universo",
+    nombre: "Nuestro universo",
+    descripcion: "Un pequeño universo con nuestros recuerdos, y una estrella que es tuya.",
+    icono: Sparkles,
+    ruta: "/universo",
+    textoBoton: "Entrar al universo",
   },
 ];
 
@@ -84,6 +93,7 @@ export default function Home() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <RegresoCard />
+        <CartaCard />
         {categories.map((categoria) => (
           <CategoryCard
             key={categoria.slug}

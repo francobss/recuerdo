@@ -1,0 +1,232 @@
+/* Sobre interactivo. Tamaño base 300x200; todo escala con --sobre-w. */
+.sobre {
+  --sobre-w: 300px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: relative;
+  width: var(--sobre-w);
+  aspect-ratio: 3 / 2;
+  perspective: 1100px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.6s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .sobre {
+    --sobre-w: 340px;
+  }
+}
+
+.sobre:disabled {
+  cursor: default;
+}
+
+.sobre:focus-visible {
+  outline: 2px solid #ec8fb4;
+  outline-offset: 10px;
+  border-radius: 8px;
+}
+
+.sobre__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 18px 24px rgba(244, 175, 200, 0.4))
+    drop-shadow(0 3px 5px rgba(31, 31, 31, 0.08));
+}
+
+/* Hover: leve movimiento (solo con puntero real) */
+@media (hover: hover) {
+  .sobre[data-fase="reposo"]:hover {
+    transform: translateY(-6px) rotate(-0.8deg);
+  }
+  .sobre[data-fase="reposo"]:hover .sobre__corazon {
+    animation: sobre-latido 1.6s ease-in-out infinite;
+  }
+}
+
+.sobre__fondo,
+.sobre__frente {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sobre__fondo {
+  z-index: 1;
+}
+
+.sobre__frente {
+  z-index: 4;
+}
+
+/* Hoja */
+.sobre__hoja {
+  position: absolute;
+  z-index: 2;
+  left: 6%;
+  right: 6%;
+  top: 8%;
+  bottom: 6%;
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 17px,
+      rgba(236, 143, 180, 0.13) 17px 18px
+    ),
+    linear-gradient(180deg, #fffdf6, #fbf4e6);
+  box-shadow: 0 1px 3px rgba(31, 31, 31, 0.12);
+  transform: translateY(0) scale(1);
+  transform-origin: 50% 100%;
+  transition:
+    transform 1.5s var(--ease),
+    opacity 0.6s ease;
+}
+
+/* Solapa */
+.sobre__solapa {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 57.5%;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.95s var(--ease),
+    z-index 0s linear 0.45s;
+}
+
+.sobre__cara {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.sobre__cara svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sobre__cara--atras {
+  transform: rotateX(180deg);
+}
+
+/* Sello */
+.sobre__sello {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 15%;
+  aspect-ratio: 1;
+  transform: translate(-50%, 42%);
+  transition: opacity 0.45s ease;
+}
+
+.sobre__corazon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: 50% 55%;
+}
+
+.sobre__para {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9%;
+  z-index: 6;
+  text-align: center;
+  font-family: "Caveat", "Segoe Script", cursive;
+  font-size: calc(var(--sobre-w) * 0.075);
+  color: rgba(120, 70, 90, 0.78);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* Fases */
+.sobre[data-fase="abriendo"] .sobre__solapa,
+.sobre[data-fase="subiendo"] .sobre__solapa,
+.sobre[data-fase="saliendo"] .sobre__solapa {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.sobre[data-fase="abriendo"] .sobre__sello,
+.sobre[data-fase="subiendo"] .sobre__sello,
+.sobre[data-fase="saliendo"] .sobre__sello {
+  opacity: 0;
+}
+
+.sobre[data-fase="abriendo"] .sobre__para,
+.sobre[data-fase="subiendo"] .sobre__para,
+.sobre[data-fase="saliendo"] .sobre__para {
+  opacity: 0.35;
+}
+
+.sobre[data-fase="subiendo"] .sobre__hoja,
+.sobre[data-fase="saliendo"] .sobre__hoja {
+  transform: translateY(-78%) scale(1.06);
+}
+
+.sobre[data-fase="saliendo"] .sobre__hoja {
+  transform: translateY(-96%) scale(1.5);
+  transition: transform 1.2s cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+@keyframes sobre-latido {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.14);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+}
+
+/* Velo de transición hacia la carta */
+.sobre-velo {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(60% 50% at 50% 45%, #fffdf6, transparent 70%),
+    linear-gradient(180deg, #fffbfd, #fdeef4);
+  transition: opacity 0.9s ease;
+}
+
+.sobre-velo[data-visible="true"] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre,
+  .sobre__hoja,
+  .sobre__solapa,
+  .sobre__sello,
+  .sobre__para,
+  .sobre-velo {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .sobre-velo {
+    transition-duration: 0.35s !important;
+  }
+  .sobre .sobre__corazon {
+    animation: none !important;
+  }
+}
