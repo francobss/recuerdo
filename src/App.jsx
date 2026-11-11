@@ -10,6 +10,7 @@ const Dedicatorias = lazy(() => import("./pages/Dedicatorias"));
 const Regreso = lazy(() => import("./pages/Regreso"));
 const CartaParaVos = lazy(() => import("./pages/CartaParaVos"));
 const Universo = lazy(() => import("./pages/Universo"));
+const Cupones = lazy(() => import("./pages/Cupones"));
 
 const SESSION_KEY = "poemav_session";
 
@@ -110,6 +111,14 @@ export default function App() {
           ) : (
             <Navigate to="/login" replace />
           )
+        }
+      />
+      <Route
+        path="/cupones"
+        element={
+          <RutaProtegida autenticado={autenticado} onLogout={handleLogout}>
+            <Cupones />
+          </RutaProtegida>
         }
       />
       <Route path="*" element={<Navigate to="/" replace />} />

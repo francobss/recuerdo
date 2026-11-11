@@ -1,0 +1,1332 @@
+/* La colección de Vale — estilos aislados del módulo (todo bajo .vale / .vale-*) */
+
+.vale {
+  --v-rose: #d99baf;
+  --v-blush: #f3dde4;
+  --v-cream: #fff8f1;
+  --v-wine: #75485b;
+  --v-gold: #c9a46a;
+  --v-white: #fffefc;
+  --v-wine-80: rgba(117, 72, 91, 0.82);
+  --v-wine-60: rgba(117, 72, 91, 0.68);
+  --v-line: rgba(201, 164, 106, 0.45);
+  --v-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  font-family: "Poppins", sans-serif;
+  color: var(--v-wine);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vale h1,
+.vale h2,
+.vale h3,
+.vale .vale-serif {
+  font-family: "Playfair Display", serif;
+  color: var(--v-wine);
+}
+
+.vale svg {
+  flex-shrink: 0;
+}
+
+/* ---------- Panel principal ---------- */
+
+.vale-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--v-line);
+  border-radius: 28px;
+  padding: 28px 18px 24px;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(243, 221, 228, 0.7), transparent 70%),
+    var(--v-cream);
+  box-shadow: 0 24px 60px -30px rgba(117, 72, 91, 0.35);
+}
+
+@media (min-width: 640px) {
+  .vale-panel {
+    padding: 44px 40px 32px;
+  }
+}
+
+.vale-header {
+  text-align: center;
+}
+
+.vale-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--v-wine-60);
+}
+
+.vale-title {
+  margin-top: 8px;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.vale-subtitle {
+  margin: 10px auto 0;
+  max-width: 26rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--v-wine-80);
+}
+
+.vale-tabs {
+  display: inline-flex;
+  margin-top: 22px;
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid var(--v-line);
+  border-radius: 999px;
+  background: var(--v-white);
+}
+
+.vale-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  white-space: nowrap;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--v-wine-80);
+  transition: background 0.25s, color 0.25s;
+}
+
+.vale-tab svg {
+  width: 16px;
+  height: 16px;
+}
+
+.vale-tab[aria-current="page"] {
+  background: var(--v-wine);
+  color: var(--v-cream);
+}
+
+.vale-tab-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--v-blush);
+  color: var(--v-wine);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* ---------- Botones ---------- */
+
+.vale-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.25s var(--v-ease), background 0.25s, box-shadow 0.25s, opacity 0.25s;
+}
+
+.vale-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.vale-btn--lg {
+  min-height: 52px;
+  padding: 0 34px;
+  font-size: 1rem;
+}
+
+.vale-btn--sm {
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 0.8rem;
+}
+
+.vale-btn--primary {
+  background: var(--v-wine);
+  color: var(--v-cream);
+  box-shadow: 0 10px 24px -12px rgba(117, 72, 91, 0.7);
+}
+
+.vale-btn--primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -12px rgba(117, 72, 91, 0.75);
+}
+
+.vale-btn--primary:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.vale-btn:disabled {
+  cursor: not-allowed;
+  background: var(--v-blush);
+  color: var(--v-wine-60);
+  box-shadow: none;
+}
+
+.vale-btn--ghost {
+  border-color: rgba(117, 72, 91, 0.35);
+  color: var(--v-wine);
+  background: transparent;
+}
+
+.vale-btn--ghost:hover {
+  background: var(--v-blush);
+}
+
+.vale-btn--ghost-light {
+  border-color: rgba(255, 248, 241, 0.5);
+  color: var(--v-cream);
+  background: transparent;
+}
+
+.vale-btn--ghost-light:hover {
+  background: rgba(255, 248, 241, 0.14);
+}
+
+.vale :where(button, summary, a):focus-visible,
+.vale-dialog:focus-visible {
+  outline: 2px solid var(--v-gold);
+  outline-offset: 3px;
+}
+
+.vale button {
+  font-family: inherit;
+}
+
+.vale-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.vale-actions--start {
+  justify-content: flex-start;
+}
+
+/* ---------- Escenario: sobre ---------- */
+
+.vale-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 26px;
+}
+
+.vale-env-area {
+  position: relative;
+  width: min(86vw, 340px);
+  padding: 34px 0 26px;
+  perspective: 900px;
+}
+
+.vale-env-float {
+  display: grid;
+  place-items: center;
+  animation: vale-float 5s ease-in-out infinite;
+}
+
+.vale-env-area[data-opening="true"] .vale-env-float {
+  animation: vale-shake 0.7s ease-in-out 1;
+}
+
+.vale-env {
+  position: relative;
+  width: min(68vw, 280px);
+  aspect-ratio: 3 / 2;
+  filter: drop-shadow(0 16px 22px rgba(117, 72, 91, 0.28));
+}
+
+.vale-env > div {
+  position: absolute;
+}
+
+.vale-env-back {
+  inset: 0;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #e7b3c4, var(--v-rose));
+}
+
+.vale-env-letter {
+  left: 9%;
+  right: 9%;
+  top: 7%;
+  bottom: 12%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 18%;
+  border: 1px solid var(--v-line);
+  border-radius: 4px;
+  background: var(--v-white);
+  transition: transform 0.9s var(--v-ease) 0.55s;
+}
+
+.vale-env-letter span {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--v-blush);
+}
+
+.vale-env-letter span:nth-child(2) {
+  width: 70%;
+}
+
+.vale-env-front {
+  inset: 0;
+  z-index: 3;
+  border-radius: 8px;
+  background: linear-gradient(200deg, #f0c3d1, #dfa5b9);
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+}
+
+.vale-env-flap {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 56%;
+  z-index: 4;
+  background: linear-gradient(180deg, #e9b6c7, #d99baf);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  backface-visibility: visible;
+}
+
+.vale-env-seal {
+  left: 50%;
+  top: 54%;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: -21px 0 0 -21px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #94627a, var(--v-wine));
+  color: var(--v-cream);
+  box-shadow: 0 0 0 2px var(--v-gold), 0 6px 12px -4px rgba(117, 72, 91, 0.6);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.vale-env-seal svg {
+  width: 18px;
+  height: 18px;
+}
+
+.vale-env-shadow {
+  width: 56%;
+  height: 14px;
+  margin: 14px auto 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(117, 72, 91, 0.25), transparent);
+  animation: vale-shadow 5s ease-in-out infinite;
+}
+
+.vale-env-area[data-opening="true"] .vale-env-seal {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.vale-env-area[data-opening="true"] .vale-env-flap {
+  animation: vale-flap 0.9s var(--v-ease) 0.3s forwards;
+}
+
+.vale-env-area[data-opening="true"] .vale-env-letter {
+  transform: translateY(-62%);
+}
+
+.vale-sparkle {
+  position: absolute;
+  background: var(--v-gold);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  opacity: 0;
+  animation: vale-twinkle 3.6s ease-in-out infinite;
+}
+
+.vale-message {
+  min-height: 3em;
+  max-width: 24rem;
+  margin: 8px 0 18px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--v-wine);
+}
+
+/* ---------- Progreso ---------- */
+
+.vale-progress {
+  max-width: 30rem;
+  margin: 30px auto 0;
+  padding: 18px 18px 20px;
+  border: 1px solid var(--v-line);
+  border-radius: 20px;
+  background: var(--v-white);
+}
+
+.vale-progress-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.vale-progress-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v-wine-80);
+}
+
+.vale-progress-count {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.vale-progress-count small {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--v-wine-60);
+}
+
+.vale-bar {
+  height: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--v-blush);
+}
+
+.vale-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--v-rose), var(--v-gold));
+  transition: width 0.9s var(--v-ease);
+}
+
+.vale-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.vale-stat {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  white-space: nowrap;
+  border-radius: 14px;
+  background: var(--v-cream);
+  font-size: 0.8rem;
+}
+
+.vale-stat svg {
+  width: 18px;
+  height: 18px;
+  color: var(--v-gold);
+}
+
+.vale-stat strong {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+}
+
+.vale-next {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--v-line);
+  text-align: center;
+}
+
+.vale-next p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--v-wine-80);
+}
+
+.vale-next p svg {
+  width: 15px;
+  height: 15px;
+  color: var(--v-gold);
+}
+
+.vale-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.vale-countdown-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 68px;
+  padding: 10px 6px;
+  border-radius: 14px;
+  background: var(--v-blush);
+}
+
+.vale-countdown-cell strong {
+  font-family: "Playfair Display", serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.vale-countdown-cell span {
+  margin-top: 4px;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--v-wine-80);
+}
+
+/* ---------- Colección ---------- */
+
+.vale-collection {
+  margin-top: 26px;
+}
+
+.vale-collection-head {
+  text-align: center;
+}
+
+.vale-collection-head h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.vale-collection-head p {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--v-wine-80);
+}
+
+.vale-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.vale-chip {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(117, 72, 91, 0.3);
+  border-radius: 999px;
+  background: var(--v-white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--v-wine);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.vale-chip--soft {
+  min-height: 32px;
+  font-size: 0.74rem;
+  border-color: var(--v-line);
+}
+
+.vale-chip[aria-pressed="true"] {
+  background: var(--v-wine);
+  border-color: var(--v-wine);
+  color: var(--v-cream);
+}
+
+.vale-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .vale-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  .vale-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.vale-empty {
+  margin: 34px auto 6px;
+  max-width: 22rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--v-wine-80);
+}
+
+.vale-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--v-line);
+  border-radius: 18px;
+  background: var(--v-white);
+  transition: transform 0.3s var(--v-ease), box-shadow 0.3s;
+}
+
+.vale-card:not(.vale-card--locked):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -16px rgba(117, 72, 91, 0.5);
+}
+
+.vale-card-main {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 14px 12px;
+  border-top: 3px solid var(--accent, var(--v-blush));
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.vale-card--locked .vale-card-main {
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  border-top-color: var(--v-blush);
+  background: repeating-linear-gradient(135deg, var(--v-cream) 0 8px, var(--v-white) 8px 16px);
+  cursor: default;
+  color: var(--v-wine-60);
+}
+
+.vale-card--locked svg {
+  width: 22px;
+  height: 22px;
+}
+
+.vale-card-number {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+}
+
+.vale-card-hidden {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vale-card-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 18%, white);
+  color: color-mix(in srgb, var(--accent) 70%, #4a2a38);
+}
+
+.vale-card-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.vale-card-category {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v-wine-80);
+}
+
+.vale-card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--v-wine);
+}
+
+.vale-card-rarity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--v-wine-80);
+}
+
+.vale-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--v-blush);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--v-wine);
+}
+
+.vale-badge[data-status="redeemed"] {
+  background: var(--v-wine);
+  color: var(--v-cream);
+}
+
+.vale-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.vale-card[data-status="redeemed"] .vale-card-main {
+  opacity: 0.78;
+}
+
+.vale-card-redeem {
+  min-height: 44px;
+  border-top: 1px dashed var(--v-line);
+  background: var(--v-cream);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--v-wine);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.vale-card-redeem:hover {
+  background: var(--v-blush);
+}
+
+.vale-gems {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.vale-gems svg {
+  width: 11px;
+  height: 11px;
+  color: rgba(117, 72, 91, 0.25);
+}
+
+.vale-gems svg.is-on {
+  color: var(--v-gold);
+  fill: rgba(201, 164, 106, 0.35);
+}
+
+/* ---------- Ticket ---------- */
+
+.vale-ticket-wrap {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 28px rgba(60, 30, 44, 0.35));
+}
+
+.vale-ticket {
+  --stub: 78px;
+  position: relative;
+  padding: 9px;
+  border-radius: 18px;
+  background: var(--v-white);
+  -webkit-mask:
+    radial-gradient(circle 11px at 0 calc(100% - var(--stub)), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 11px at 100% calc(100% - var(--stub)), #0000 98%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle 11px at 0 calc(100% - var(--stub)), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 11px at 100% calc(100% - var(--stub)), #0000 98%, #000) right / 51% 100% no-repeat;
+}
+
+.vale-ticket-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--v-gold);
+  border-radius: 12px;
+  background:
+    radial-gradient(90% 50% at 50% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent),
+    var(--v-cream);
+  box-shadow: inset 0 0 0 4px var(--v-white), inset 0 0 0 5px rgba(201, 164, 106, 0.4);
+}
+
+.vale-ticket-corner {
+  position: absolute;
+  top: 12px;
+  width: 7px;
+  height: 7px;
+  background: var(--v-gold);
+  transform: rotate(45deg);
+  opacity: 0.8;
+}
+
+.vale-ticket-corner--tl {
+  left: 14px;
+}
+
+.vale-ticket-corner--tr {
+  right: 14px;
+}
+
+.vale-ticket-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 26px 22px 0;
+}
+
+.vale-stamp {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 16%, white);
+  color: color-mix(in srgb, var(--accent) 75%, #3d2230);
+  box-shadow: 0 0 0 3px var(--v-white), 0 0 0 4px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.vale-stamp svg {
+  width: 21px;
+  height: 21px;
+}
+
+.vale-ticket-category {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--v-wine-80);
+}
+
+.vale-ticket-body {
+  padding: 14px 24px 22px;
+  text-align: center;
+}
+
+.vale-ticket-title {
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.vale-ticket-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px auto;
+  max-width: 190px;
+  color: var(--v-gold);
+}
+
+.vale-ticket-rule span {
+  flex: 1;
+  height: 1px;
+  background: var(--v-line);
+}
+
+.vale-ticket-rule svg {
+  width: 14px;
+  height: 14px;
+}
+
+.vale-ticket-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--v-wine);
+}
+
+.vale-ticket-stub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: calc(var(--stub) - 9px);
+  border-top: 1.5px dashed var(--v-line);
+}
+
+.vale-ticket-rarity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.vale-ticket-rarity .vale-gems svg {
+  width: 13px;
+  height: 13px;
+}
+
+.vale-ticket-code {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--v-wine-80);
+  font-variant-numeric: tabular-nums;
+}
+
+.vale-ticket[data-rarity="legendario"] .vale-ticket-inner {
+  border-color: #b8893f;
+}
+
+.vale-ticket[data-rarity="legendario"] .vale-ticket-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 244, 214, 0.65) 50%, transparent 65%);
+  background-size: 250% 100%;
+  animation: vale-shimmer 4.5s ease-in-out infinite;
+}
+
+.vale-ticket[data-redeemed="true"] .vale-ticket-inner {
+  filter: saturate(0.7);
+}
+
+.vale-ticket-seal {
+  position: absolute;
+  right: 18px;
+  top: 38%;
+  padding: 6px 14px;
+  border: 2px solid var(--v-wine);
+  border-radius: 8px;
+  background: rgba(255, 254, 252, 0.85);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--v-wine);
+  transform: rotate(-12deg);
+}
+
+/* ---------- Diálogos ---------- */
+
+.vale-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgba(70, 40, 54, 0.5);
+  backdrop-filter: blur(6px);
+  animation: vale-fade 0.3s ease-out both;
+}
+
+.vale-overlay[data-tone="dark"] {
+  background: rgba(58, 30, 44, 0.78);
+}
+
+.vale-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  outline: none;
+  animation: vale-rise 0.45s var(--v-ease) both;
+}
+
+.vale-dialog-close {
+  position: absolute;
+  right: -2px;
+  top: -44px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 248, 241, 0.92);
+  color: var(--v-wine);
+  cursor: pointer;
+}
+
+.vale-dialog-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.vale-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.vale-detail-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--v-cream);
+}
+
+.vale-detail-dates li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.vale-detail-dates svg {
+  width: 15px;
+  height: 15px;
+  color: var(--v-gold);
+}
+
+.vale-detail-note {
+  font-size: 0.82rem;
+  text-align: center;
+  color: var(--v-cream);
+}
+
+.vale-confirm {
+  padding: 28px 22px 22px;
+  border-radius: 24px;
+  background: var(--v-cream);
+  text-align: center;
+  box-shadow: 0 30px 60px -20px rgba(40, 18, 30, 0.6);
+}
+
+.vale-confirm h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.vale-confirm > p {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: var(--v-wine);
+}
+
+.vale-confirm-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem !important;
+  font-weight: 600;
+}
+
+.vale-confirm-hint {
+  font-size: 0.8rem !important;
+  color: var(--v-wine-80) !important;
+}
+
+.vale-confirm .vale-actions {
+  margin-top: 22px;
+}
+
+.vale-check {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--v-wine);
+  color: var(--v-cream);
+  box-shadow: 0 0 0 5px var(--v-blush), 0 0 0 6px var(--v-gold);
+  animation: vale-pop 0.6s var(--v-ease) both;
+}
+
+.vale-check svg {
+  width: 30px;
+  height: 30px;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: vale-draw 0.5s ease-out 0.25s forwards;
+}
+
+.vale-confirm .vale-btn {
+  margin-top: 20px;
+}
+
+.vale-confirm .vale-actions .vale-btn {
+  margin-top: 0;
+}
+
+/* ---------- Revelación ---------- */
+
+.vale-reveal {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.vale-reveal-kicker {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  color: var(--v-cream);
+  animation: vale-fade 0.8s ease-out 0.2s both;
+}
+
+.vale-reveal .vale-btn--primary,
+.vale-detail .vale-btn--primary {
+  background: var(--v-cream);
+  color: var(--v-wine);
+}
+
+.vale-reveal-ticket {
+  width: 100%;
+  animation: vale-ticket-in 0.9s var(--v-ease) 0.1s both;
+}
+
+.vale-reveal-note {
+  font-size: 0.82rem;
+  color: rgba(255, 248, 241, 0.85);
+  animation: vale-fade 0.8s ease-out 0.8s both;
+}
+
+.vale-reveal .vale-actions {
+  animation: vale-fade 0.8s ease-out 0.9s both;
+}
+
+.vale-celebration {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vale-petal {
+  position: absolute;
+  top: -20px;
+  border-radius: 80% 0 80% 0;
+  opacity: 0;
+  animation: vale-fall 6s linear infinite;
+}
+
+.vale-petal[data-tone="0"] {
+  background: var(--v-rose);
+}
+
+.vale-petal[data-tone="1"] {
+  background: var(--v-gold);
+}
+
+.vale-petal[data-tone="2"] {
+  background: var(--v-blush);
+}
+
+/* ---------- Colección completa ---------- */
+
+.vale-complete {
+  max-width: 28rem;
+  margin: 26px auto 0;
+  padding: 30px 22px;
+  border: 1px solid var(--v-gold);
+  border-radius: 24px;
+  background: var(--v-white);
+  text-align: center;
+  box-shadow: inset 0 0 0 5px var(--v-white), inset 0 0 0 6px var(--v-line);
+}
+
+.vale-complete-crown {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--v-blush);
+  color: var(--v-gold);
+  animation: vale-float 5s ease-in-out infinite;
+}
+
+.vale-complete-crown svg {
+  width: 30px;
+  height: 30px;
+}
+
+.vale-complete h2 {
+  margin-top: 14px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.vale-complete p {
+  margin: 10px 0 22px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--v-wine-80);
+}
+
+/* ---------- Copia de seguridad ---------- */
+
+.vale-backup {
+  max-width: 30rem;
+  margin: 30px auto 0;
+  font-size: 0.78rem;
+  color: var(--v-wine-80);
+}
+
+.vale-backup summary {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 6px 10px;
+  list-style: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.vale-backup summary::-webkit-details-marker {
+  display: none;
+}
+
+.vale-backup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: 1px dashed var(--v-line);
+  border-radius: 16px;
+  line-height: 1.55;
+}
+
+.vale-hidden-input {
+  display: none;
+}
+
+.vale-feedback {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--v-wine);
+}
+
+.vale-feedback[data-kind="error"] {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--v-blush);
+}
+
+/* ---------- Animaciones ---------- */
+
+@keyframes vale-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes vale-shadow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.88); opacity: 0.7; }
+}
+
+@keyframes vale-shake {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-2.5deg); }
+  40% { transform: rotate(2.5deg); }
+  60% { transform: rotate(-1.5deg); }
+  80% { transform: rotate(1.5deg); }
+}
+
+@keyframes vale-flap {
+  0% { transform: rotateX(0); z-index: 4; }
+  50% { transform: rotateX(90deg); z-index: 4; }
+  51% { z-index: 1; }
+  100% { transform: rotateX(180deg); z-index: 1; }
+}
+
+@keyframes vale-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0); }
+  50% { opacity: 0.85; transform: scale(1) rotate(20deg); }
+}
+
+@keyframes vale-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes vale-rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes vale-ticket-in {
+  0% { opacity: 0; transform: translateY(60px) rotate(-4deg) scale(0.86); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes vale-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes vale-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes vale-shimmer {
+  0% { background-position: 150% 0; }
+  60%, 100% { background-position: -50% 0; }
+}
+
+@keyframes vale-fall {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0); }
+  10% { opacity: 0.9; }
+  100% { opacity: 0; transform: translate3d(40px, 105vh, 0) rotate(300deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vale *,
+  .vale *::before,
+  .vale *::after,
+  .vale {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .vale-petal,
+  .vale-sparkle {
+    display: none;
+  }
+}

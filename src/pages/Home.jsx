@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, History, Waves, Quote, Sparkles } from "lucide-react";
+import { ArrowLeft, History, Waves, Quote, Sparkles, Ticket } from "lucide-react";
 import CategoryCard from "../components/CategoryCard";
 import RegresoCard from "../components/RegresoCard";
 import CartaCard from "../components/CartaCard";
@@ -40,6 +40,14 @@ const seccionesExtra = [
     icono: Sparkles,
     ruta: "/universo",
     textoBoton: "Entrar al universo",
+  },
+  {
+    slug: "cupones",
+    nombre: "La colección de Vale",
+    descripcion: "Una pequeña sorpresa para descubrir cada día.",
+    icono: Ticket,
+    ruta: "/cupones",
+    textoBoton: "Descubrir mi sorpresa",
   },
 ];
 
