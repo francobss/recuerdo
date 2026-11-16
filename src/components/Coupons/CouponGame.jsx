@@ -10,6 +10,7 @@ import CouponDetail from "./CouponDetail";
 import CouponRedeemModal from "./CouponRedeemModal";
 import CouponComplete from "./CouponComplete";
 import CouponBackup from "./CouponBackup";
+import CouponAvisos from "./CouponAvisos";
 import "./coupons.css";
 
 const OPEN_MS = 1700;
@@ -83,6 +84,8 @@ export default function CouponGame() {
           onRedeem={setRedeemId}
         />
       )}
+
+      <CouponAvisos nextUnlockAt={waiting ? nextUnlockAt : null} isComplete={stats.isComplete} />
 
       <CouponBackup
         stats={stats}
